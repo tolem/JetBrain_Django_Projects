@@ -1,0 +1,22 @@
+<h5 id="description">Description</h5>
+<p>HyperJob is a recruitment agency founded in 1970. Company managers still prefer to communicate over the phone or email and search for employees in an old-fashioned way. It was an efficient strategy twenty years ago, but nowadays, potential employees prefer to apply for jobs online. The problem is that HyperJob still doesn't have a website, so they want you to develop one as soon as possible.</p>
+<p>The website should allow recruiters to create vacancies and job seekers to create resumes.</p>
+<h5 id="objectives">Objectives</h5>
+<p>We need to safely store all the vacancies and resumes in a database. Your first task is to develop data models to manage the database tables.</p>
+<p></p><div class="alert alert-primary">Use the default settings of the project with the predefined SQLite database.</div>
+<ul>
+<li>Throughout the project, we will need at least two models: <code class="java">Vacancy</code> and <code class="java">Resume</code>. Both of them should have <code class="java">description</code> and <code class="java">author</code> fields. The <code class="java">description</code> field is a text field with no more than 1024 symbols, and the <code class="java">author</code> field is a foreign key linked to the <code class="java">django.contrib.auth.models.User</code> model. </li>
+<li>Looking ahead, as our service is intended to be used both by employers and employees with different roles, it's a good practice to make two apps inside of our project  (for example, resume and vacancy), so <code class="java">Vacancy</code> and <code class="java">Resume</code> models should be stored in different <em>models.py</em> files, each inside the proper app directory.</li>
+<li>Don't forget to add new applications to the <code class="java">INSTALLED_APPS</code> list in the <em>settings.py</em> file.</li>
+</ul>
+<p>Hint! If you get stuck when creating the author field, check out an <a href="https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#extending-the-existing-user-model" rel="noopener noreferrer nofollow" target="_blank">example provided in the docs</a>.</p>
+<ul>
+<li>Define <code class="java">Vacancy</code> and <code class="java">Resume</code> in the <em>models.py </em>modules in applications and migrate them to the database by executing the following commands in the terminal:</li>
+</ul>
+<pre><code class="java">python3 manage.py makemigrations</code></pre>
+<pre><code class="java">python3 manage.py migrate</code></pre>
+<h5 id="examples">Examples </h5>
+<p><strong>Example 1</strong>:<strong> </strong><em>a</em><strong> </strong><em>general view of the admin panel in case of success - models are created, registered, we can add instances</em></p>
+<p><img alt="" height="509" name="HJA_example1.jpg" src="https://ucarecdn.com/ffb2a136-4b6d-4066-8b5e-5f32b4a4efc6/" width="877"/></p>
+<p><strong>Example 2</strong>:<strong> </strong><em>fields of model Resume</em></p>
+<p><img alt="" height="427" name="Screenshot from 2023-01-18 23-36-45.png" src="https://ucarecdn.com/e3993664-c6d3-4f8d-84a3-b67de68a5f9c/-/crop/1788x427/71,64/-/preview/" width="1788"/></p>

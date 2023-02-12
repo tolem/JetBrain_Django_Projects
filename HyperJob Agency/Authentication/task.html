@@ -1,0 +1,36 @@
+<h5 id="description"> Description</h5>
+<p>Success! The online service is up and running. HyperJob is now receiving dozens of emails and phone calls; however, some of the job hunters are complaining as they still cannot log in to publish their resumes.</p>
+<p>You receive an email from the CTO of HyperJob:</p>
+<pre><code class="language-no-highlight">FROM: official@hyperjob.com
+TO: you@hyperjob.com
+DATE: today
+SUBJECT: Thanks for the great work
+
+Congratulations, we’ve made a really important step. Great job, we are proud to have such professionals in our team! Could you start working on user authentication next?</code></pre>
+<h5 id="objectives">Objectives</h5>
+<p>Your task is to implement authentication on the website.</p>
+<p>Create three pages:</p>
+<ul>
+<li>One for new users to sign up and create their accounts;</li>
+<li>The second is for logging in with their usernames and passwords; </li>
+<li>The thrird one is for logging out. Users do not need to send any information, so they should just go to the right URL.</li>
+</ul>
+<p>As our site is not very elaborate, there's no need to create a special application for authentication issues, this functionality may be made in one of the applications we've already constructed.</p>
+<p>Please use <code class="language-python">django.contrib.auth.forms.UserCreationForm</code> for your signup handler; <code class="language-python">django.contrib.auth.forms.AuthenticationForm</code> or <code class="language-python">django.contrib.auth.views.LoginView</code> for the login handler, and <code class="language-python">django.contrib.auth.views.LogoutView</code> for logout.</p>
+<p>If the login request is successful, redirect the user to the menu page.</p>
+<p>If you start the application on your computer with the <code class="language-python">python manage.py runserver</code> command, the sign-up page should be available at <code class="language-python">localhost:8000/signup</code> , the login page should be at <code class="language-python">localhost:8000/login</code>, and the logout at <code class="language-python">localhost:8000/logout</code>. Don't forget to make migrations, as it's necessary for creating the authentication models.</p>
+<p>Pay attention that the URLs do not have a slash at the end, so your URL patterns should not have it either. You can redirect <code class="language-python">GET</code> requests to the right page with the help of <code class="language-python">RedirectView</code> if you need to:</p>
+<pre><code class="language-python">from django.views.generic import RedirectView
+ 
+urlpatterns = [
+   # some other patterns
+   path('login/', RedirectView.as_view(url='/login')),
+   path('logout/', RedirectView.as_view(url='/logout')),
+   path('signup/', RedirectView.as_view(url='/signup')),
+]</code></pre>
+<p>Another way is to set up the <code class="language-python">LOGIN_REDIRECT_URL</code> variable in <em>settings.py</em> file and use it.</p>
+<h5 id="examples">Examples</h5>
+<p><strong>Example 1: </strong><em>Authentication page</em></p>
+<p><img alt="" height="389" name="Screenshot from 2023-01-19 00-07-38.png" src="https://ucarecdn.com/ca208206-6bff-4c66-8ac7-f65f959fdac3/-/crop/775x389/76,59/-/preview/" width="775"/></p>
+<p><strong>Example 2: </strong><em>Login page</em></p>
+<p><img alt="" height="187" name="Screenshot from 2023-01-19 00-16-25.png" src="https://ucarecdn.com/c75da2d1-7e76-465b-9488-577f5b4c721e/-/crop/556x187/76,62/-/preview/" width="556"/></p>

@@ -1,0 +1,51 @@
+<h5 id="description">Description</h5>
+<p>The agency wants to launch the site next week. However, not all pages will be ready by that time yet, and we need to create at least two particular pages to make the site work. Without the list of vacancies and the list of resumes the service has no meaning, so we need to create these pages first.</p>
+<h5 id="objectives">Objectives</h5>
+<p>Your task is to create the pages with vacancies and resumes shown as lists of entries without any sorting. You can add any additional information on the page, but each list entry should at least meet the following criteria:</p>
+<ol>
+<li>Each resume or vacancy should be in a separate line (you may use a <code class="language-python">&lt;div&gt;</code> element for that purpose);</li>
+<li>The text in each element should be input as follows: "<code class="language-python">&lt;author&gt;: &lt;description&gt;</code>", where <code class="language-python">&lt;author&gt;</code><em> </em>is the <code class="language-python">username</code> field of the <code class="language-python">User</code> model. Example: <code class="language-python">&lt;div&gt;Pierre: Product Designer&lt;/div&gt;</code></li>
+</ol>
+<p>To complete the task that's what we need to do:</p>
+<ul>
+<li>Create HTML files in the <em>templates</em> directory for vacancies and resumes (in both applications: resume and vacancy, respectively) with the content described above.</li>
+</ul>
+<p>To display data from the database, use DTL expressions and for-loops:</p>
+<pre><code class="language-python">{% block content %} 
+
+{% for item in data %}
+&lt;div&gt;
+    {{item.model_field_we_need1}}: {{item.model_field_we_need2}}
+
+&lt;/div&gt;
+{% endfor %}
+
+{% endblock %} 
+</code></pre>
+<ul>
+<li>To make our templates available, create two view functions for each page and send context to them.</li>
+</ul>
+<p>To combine a <a href="https://docs.djangoproject.com/en/2.2/topics/class-based-views/intro/#handling-forms-with-class-based-views" rel="noopener noreferrer nofollow" target="_blank">template with the HTTP handler</a>, use the <code class="language-python">django.shortcuts.render</code> function. To pass any arguments to the template, add the dictionary to the <code class="language-python">render</code> function:</p>
+<pre><code class="language-python">render(request, template_name, {'name_you_are_using_in_template': your_variable})</code></pre>
+<p>There is an example of the <code class="language-python">view</code> class:</p>
+<pre><code class="language-python">class SomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'app_folder/page.html', context={'data': Model.objects.all()})</code></pre>
+<p><code class="language-python">View</code> may be implemented with a function, not as a class:</p>
+<pre><code class="language-python">def someView(request):
+    data = Model.objects.all()
+    context = {
+        'data': data,
+    }
+    return render(request, ''app_folder/page.html', context=context)</code></pre>
+<ul>
+<li>And the last thing we need to do is to add a path function for our view to the <em>urls.py</em> file for each page.</li>
+</ul>
+<p>If you start the application on your computer with the <code class="language-python">python manage.py runserver</code> command, the vacancy list should be available at the address <em>localhost:8000/vacancies</em> and the resume list should be at <em>localhost:8000/resumes</em>.</p>
+<p></p><div class="alert alert-warning">Tests for your project will be run on a prepared database, so you do not need to worry about the amount of data in yours.</div>
+<p>In case you want to run your application for testing purposes and see some resumes and vacancies on the relevant pages, you can use <code class="language-python">Resume.objects.create</code> or <code class="language-python">Vacancy.objects.create</code> to add some data.</p>
+<h5 id="examples">Examples</h5>
+<p><strong>Example 1: </strong><em>Resume list page</em></p>
+<p><img alt="" height="321" name="Screenshot from 2023-01-19 00-05-37.png" src="https://ucarecdn.com/a960a116-76cc-4384-9886-4a6a4de37bbe/-/crop/445x321/73,59/-/preview/" width="445"/></p>
+<p><strong>Example 2: </strong><em>Vacancies list page</em></p>
+<p><img alt="" height="270" name="Screenshot from 2023-01-19 00-02-56.png" src="https://ucarecdn.com/7fb1a8f0-afd2-41b2-8a96-03fef2660a92/-/crop/490x270/76,64/-/preview/" width="490"/></p>

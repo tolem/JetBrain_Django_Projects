@@ -1,0 +1,13 @@
+{% extends 'resume/base.html' %}
+
+{% block title %} <title> Resume </title> {% endblock %}
+{% block header %} <h1> Resume </h1> {% endblock %}
+{% block content %}
+
+{% for item in data %}
+<div>
+    {{item.author}}: {{item.description}}
+
+</div>
+{% endfor %}
+{% endblock %}

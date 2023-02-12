@@ -1,0 +1,14 @@
+{% extends 'hyperjob/base.html' %}
+
+{% block title %} <title> {{ data.label }} </title>  {% endblock %}
+{% block header %} <h1> {{ data.label }} </h1> {% endblock %}
+{% block content %}
+
+<form method="POST" action="{% url 'manager' site  %}">
+    {% csrf_token %}
+
+    {{ data.as_p }}
+    </br>
+    <input type="submit" value="Create" />
+    </form>
+{% endblock %}

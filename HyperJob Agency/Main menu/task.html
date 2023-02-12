@@ -1,0 +1,32 @@
+<h5 id="description">Description</h5>
+<p>The website is designed for recruitment managers and candidates. A manager can create vacancies and read candidate resumes, while a candidate can create a resume and view vacancies. Both managers and candidates need to be able to log in, log out, and see their profiles.</p>
+<p>To begin with, let's create a main page with a menu.</p>
+<h5 id="objectives">Objectives</h5>
+<p>The main page of the service will have a menu with links to all other pages that the user needs: vacancy list, resume list, and personal profile. At the top of the page, there should be a greeting message.</p>
+<p>The HTML file you're about to create should be placed in the <em>templates</em> directory in one of the applications' folders (you may choose the vacancy app folder for that purpose). Usually, we need to add the <em>templates</em> directory manually.</p>
+<p>Let's look at the design.</p>
+<ol>
+<li>The menu should contain an element of any HTML tag with exact text at the top, for example in <code class="language-html">&lt;h2&gt;</code> tag:
+
+	<pre><code class="language-html">&lt;h2&gt;Welcome to HyperJob!&lt;/h2&gt;</code></pre>
+</li>
+<li>Next, there should be a menu with six links in separate lines (page names may differ, tests check links only):
+	<ul>
+<li>Login page (<code class="language-html">href</code> attribute equals <code class="language-html">"/login"</code>);</li>
+<li>Logout page (<code class="language-html">href</code> attribute equals <code class="language-html">"/logout"</code>);</li>
+<li>Sign-up page (<code class="language-html">href</code> attribute equals <code class="language-html">"/signup"</code>);</li>
+<li>Vacancy list (<code class="language-html">href</code> attribute equals <code class="language-html">"/vacancies"</code>);</li>
+<li>Resume list (<code class="language-html">href</code> attribute equals <code class="language-html">"/resumes"</code>);</li>
+<li>Personal profile (<code class="language-html">href</code> attribute equals <code class="language-html">"/home"</code>).</li>
+</ul>
+</li>
+</ol>
+<p>If you start the application on your computer with the <code class="language-html">python manage.py runserver</code> command, the menu page should be available at the <em>localhost:8000 </em>address.</p>
+<p></p><div class="alert alert-primary">If you want to use a custom directory for your templates, add its path to the <code class="language-html">TEMPLATE['DIRS']</code> list in the <em>settings.py</em> module.</div>
+<p>To combine a <a href="https://docs.djangoproject.com/en/2.2/topics/class-based-views/intro/#handling-forms-with-class-based-views" rel="noopener noreferrer nofollow" target="_blank">template with the HTTP handler</a>, you can use the <code class="language-html">django.shortcuts.render</code> function:</p>
+<pre><code class="language-python">render(request, template_name)</code></pre>
+<p>You don't need to implement the handlers for these pages yet: you'll do that in the next steps.</p>
+<p>Take a moment to think about where the relevant files concerning the menu should be located in the Django project structure. Creating a separate Django application is usually a good approach if it is orthogonal to everything else and is potentially reusable.</p>
+<h5 id="examples">Examples </h5>
+<p><strong>Example 1</strong>:<strong> </strong><em>Menu page</em></p>
+<p><img alt="" height="283" name="Screenshot from 2023-01-18 23-50-16.png" src="https://ucarecdn.com/a201f70e-1897-4ac0-976e-b2c297dfa2ea/-/crop/324x283/73,54/-/preview/" width="324"/></p>

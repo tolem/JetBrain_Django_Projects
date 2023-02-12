@@ -1,0 +1,18 @@
+<h5 id="description">Description</h5>
+<p>Now, you've implemented authentication, but HyperJob users still cannot create their profiles or publish their resumes. The final step is to create a page that will allow users to do that. We are one step away from having a fully functional dynamic website for HyperJob!</p>
+<h5 id="objectives">Objectives</h5>
+<p>Your task is to make a new page with two handlers: one for creating vacancies and another for resumes. Only HyperJob managers can create vacancies, and only registered users can create resumes. When a user creates a new item, it should appear on the appropriate resume or vacancy page.</p>
+<p>To go through the steps in the right manner, use the following algorithm for the user's request processing (a <code class="java">view</code> function or a class):</p>
+<ol>
+<li>Distinguish managers from applicants. For this purpose, use the boolean field <code class="java">is_staff</code> in <code class="java">django.contrib.auth.models.User</code>. If <code class="java">true</code>, the user is a manager; otherwise, a candidate;</li>
+<li>Also, we need to check if a user is authenticated. Unauthenticated users are not allowed to create either vacancies or resumes. To check on this, you can use the <code class="java">request.user.is_authenticated</code> property in your handler;</li>
+<li>What is available on the profile page depends on who is logged ⁠— a candidate should see a form to submit their resume, and a manager⁠ — a form to submit a vacancy. Anonymous users should not be able to submit anything. There should be no form there. You can use an HTML form or define one with Django forms. The main requirement is that the handlers should receive only one <code class="java">POST</code> parameter: <code class="java">description</code>. That's enough to create a new item.</li>
+<li>If the request is successful, redirect the user back to the home page; otherwise, respond with the <code class="java">403 (Forbidden)</code> status code.</li>
+</ol>
+<p>If you start the application on your computer with the <code class="java">python manage.py runserver</code> command, the profile page should be available at <code class="java">localhost:8000/home</code>, a new resume can be created at <code class="java">localhost:8000/resume/new</code>, and a new vacancy at <code class="java">localhost:8000/vacancy/new</code>. </p>
+<p></p><div class="alert alert-warning">Use <code class="java">POST</code> handlers for the creation of resumes and vacancies. There's no need to create <code class="java">GET</code> handlers neither for <code class="java">localhost:8000/resume/new</code> nor for <code class="java">localhost:8000/vacancy/new</code>. Remember that a CSRF token for forms is necessary!</div>
+<p>HINT! If you want to check the implementation and emulate having a user who is a manager and a candidate, use the command <code class="java">python manage.py createsuperuser</code>. For superusers, fields <code class="java">is_staff</code> will be <code class="java">true</code>, while for ordinary users created via signup <code class="java">is_staff</code> is <code class="java">false</code>. </p>
+<p><strong>Example 1: </strong><em>Create vacancy page</em></p>
+<p><img alt="" height="197" name="Screenshot from 2023-01-19 00-18-43.png" src="https://ucarecdn.com/ca3ef863-239b-438b-843a-0dc87803eb65/-/crop/821x197/78,57/-/preview/" width="821"/></p>
+<p><strong>Example 2: </strong><em>Create resume page</em></p>
+<p><img alt="" height="212" name="Screenshot from 2023-01-19 00-19-51.png" src="https://ucarecdn.com/8d8f4cd8-9bac-4acf-a875-004c312a17b0/-/crop/703x212/73,67/-/preview/" width="703"/></p>

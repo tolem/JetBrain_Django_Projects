@@ -1,0 +1,14 @@
+{% extends 'hyperjob/base.html' %}
+{% block title %} <title> Home </title> {% endblock %}
+{% block header %} <h1> Home </h1> {% endblock %}
+{% block content %}
+<form action="resume/new" method="get">
+    {% csrf_token %}
+    <input type="submit" value="create resume">
+</form>
+
+<form action="vacancy/new" method="get">
+    {% csrf_token %}
+    <input type="submit" value="create vacancy">
+</form>
+{% endblock %}
