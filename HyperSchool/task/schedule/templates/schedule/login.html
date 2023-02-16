@@ -1,0 +1,9 @@
+{% extends 'schedule/base.html' %}
+{% block body %}
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ data.as_p }}
+    </br>
+    <input type="submit" value="Login" />
+    </form>
+{% endblock %}

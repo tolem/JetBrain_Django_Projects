@@ -1,0 +1,19 @@
+<h5 id="description">Description</h5>
+<p>You still have a lot to say to your clients. All educational products should be fully represented. Let's add two more pages. One will contain information about the course content, teaching methods, duration, and staff. The other page will contain something like CVs of your best mentors, administrators, moderators, etc. to guide your student through the program to the mountains of knowledge.</p>
+<p>You already know how to create templates, so add two more to the templates' directory. Think of interesting headings and add any information that would be useful for your clients. Furthermore, we are going to display information from our models. To access the fields of the necessary model, you can use the so-called <strong>dot notation </strong>— <code class="java">{{ model name.field name }}</code>. This page should contain the title of the course placed in <code class="java">&lt;h2&gt;</code> tags, other information in <code class="java">&lt;p&gt;</code> tags on the HTML-template, and list of teachers participating with links to the pages with information about them. So, the same thing for the page on teachers (<code class="java">teacher_details</code>) but with the <code class="java">Teacher</code> model (name, surname in <code class="java">&lt;h2&gt;</code> tags) should be done.</p>
+<p>The next step is to add two view classes for each page in <em>views.py</em>. Create the <code class="java">template_name</code> and <code class="java">model</code> fields in them.</p>
+<p>Finally, pay attention to the path endings in <em>urls.py</em>. Use regular expressions to address the <code class="java">&lt;pk&gt;</code> of each item in the database. As a result, URL should be generated as <code class="java">schedule/course_details/1</code> for the first course and consequentially (<code class="java">2</code>, <code class="java">3</code>…) for the rest of courses. For the second page, URLs are <code class="java">schedule/teacher_details/1</code>, <code class="java">schedule/teacher_details/2</code>, and so on.</p>
+<p>Don't forget to provide both new pages with links to go back to the main page with list of courses (<em>main.html</em>).</p>
+<p>If you can easily switch from one page to another, let's continue with the next stage.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Create new HTML templates for the course and teacher details pages,</li>
+<li>Add links for new pages,</li>
+<li>Add views for new pages,</li>
+<li>Use regexes in the URL mapper to adjust it.</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p><strong>Example 1</strong>:<strong> </strong><em>the course details page</em></p>
+<p><img alt="" height="537" name="image.png" src="https://ucarecdn.com/2bb14c99-7cf4-478b-b23e-addb05e4e74f/" width="711"/></p>
+<p><strong>Example 2</strong>:<strong> </strong><em>the teacher's page</em></p>
+<p><img alt="" height="578" name="teachers page.png" src="https://ucarecdn.com/8fb0e95f-41aa-441c-9811-53f66fe1b7bd/" width="1072"/></p>

@@ -1,0 +1,45 @@
+<h5 id="description">Description</h5>
+<p>You have a good selection of educational materials that you want to share. So, you decided to run an online school. Of course, you need a site where students could find a course and get information about the curriculum, price, duration, goals, and professors. It's also a good idea to monetize it in the future.</p>
+<p>Let's start with building a database structure for our project. Firstly, we need to start the basic Django project structure <code class="java">HyperSchool</code> and create the app <code class="java">schedule</code> inside:</p>
+<pre><code class="language-no-highlight">python manage.py startapp schedule</code></pre>
+<p>That's that we would do when starting the project from scratch. Now, as you can see, "schedule" folder already exists. </p>
+<p>Don't forget to add it to <code class="java">settings.py</code>.</p>
+<p>After this, create the database models. Throughout our project, we will require three models: <code class="java">Course</code>, a model that describes our educational program, <code class="java">Student</code> stores the information about our clients, and <code class="java">Teacher</code> — it will provide us information about the staff of the online school.</p>
+<p>Then, add these models to <em>models.py</em> of our application <code class="java">schedule</code>. The <code class="java">Teacher</code> model should have the following fields:</p>
+<ul>
+<li><code class="java">name</code> — a string with a max length of not less than 50;</li>
+<li><code class="java">surname</code> — also, a string;</li>
+<li><code class="java">age</code> — an integer value;</li>
+<li><code class="java">about</code> — text to represent experience and achievements.</li>
+</ul>
+<p>The <code class="java">Course</code> model should have the following fields:</p>
+<ul>
+<li><code class="java">title</code> — a string with a max length of more than 100 (let's say 255 — this length is often used),</li>
+<li><code class="java">info</code> — also a string, should be longer, as a description, of course, may differ,</li>
+<li><code class="java">duration_months</code> — an integer value. You may use other kinds of fields with methods to convert it or simplify input,</li>
+<li><code class="java">price,</code></li>
+<li><code class="java">teacher</code> — <code class="java">ManyToMany</code> connection to our <code class="java">Teacher</code> model.</li>
+</ul>
+<p>And the model <code class="java">Student</code> with fields:</p>
+<ul>
+<li><code class="java">name</code> — a string with a max length of more than 50,</li>
+<li><code class="java">surname</code> — also a string,</li>
+<li><code class="java">age</code> — an integer value,</li>
+<li><code class="java">course</code> — <code class="java">ManyToMany</code> connection to the <code class="java">Course</code> model.</li>
+</ul>
+<p>The next step is to populate the new site with data using the Django admin panel. Use the default settings of the project with the predefined SQLite database. Write the <code class="java">Course</code>, <code class="java">Student</code>, and <code class="java">Teacher</code> models into <em>models.py</em>, register them in <em>admin.py,</em> and migrate them to the database.</p>
+<p>To see what we get on the page, let's add some courses to the database through the admin panel. You can reach it by the following URL when your server is started with the <code class="java">python3 manage.py runserver</code>: </p>
+<pre><code class="language-no-highlight">https://127.0.0.1:8000/admin/</code></pre>
+<p>Create a superuser in the terminal and login properly on the admin page. If your solution is correct, the required models will run in our project. Well done! Let's add some courses, teachers, and students in the next stage!</p>
+<h5 id="objectives">Objectives</h5>
+<p>To pass this stage, you need to do the following:</p>
+<ul>
+<li>Create a skeleton of the new app with the basic Django project;</li>
+<li>Create the database models on par with the description above;</li>
+<li>Use the Django admin panel and populate the new site with data.</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p><strong>Example 1</strong>:<strong> </strong><em>a</em><strong> </strong><em>general view of the admin panel</em></p>
+<p><img alt="" height="599" name="admin panel.png" src="https://ucarecdn.com/6fde23fb-591c-49b9-8b52-035edc403b46/" width="792"/></p>
+<p><strong>Example 2</strong>:<strong> </strong><em>interface for adding courses</em></p>
+<p><img alt="" height="850" name="Screenshot from 2022-04-15 01-02-03.png" src="https://ucarecdn.com/a5dca446-4c88-47fc-ab5f-e7681e78a420/" width="944"/></p>

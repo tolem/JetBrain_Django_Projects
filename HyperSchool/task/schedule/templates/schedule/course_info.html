@@ -1,0 +1,29 @@
+{% extends 'schedule/base.html' %}
+{% block body %}
+<h2> Name of the program: {{ course.title }}</h2>
+
+<p> Course description: {{ course.info }} </p>
+<p> Course duration: {{ course.duration_months}} months</p>
+<p> Course price: ${{ course.price }}</p>
+<h2>Already studying: </h2>
+<p> {% for teacher in course.teacher.all %}
+{% for student in course.student_set.all %}
+    {{ student }} </br>
+    {% endfor %}
+   {% endfor %}
+</p>
+<h2> Teachers of the course: </h2>
+{% for teacher in teachers %}
+<p><a href="{{teacher.get_absolute_url}}">{{ teacher.name | add:" "| add:teacher.surname }}</a> </p>
+{% endfor %}
+
+<p><h2>Join us!</h2><a href="{% url 'add_course' %}">Apply to the course {{ course.title }} </a></p>
+<p><a href="{% url 'main' %}">Go back to the list of courses </a></p>
+    <h2>Already studying:</h2>
+
+    {% for student in students %}
+
+        <p>{{ student.name }}</p>
+
+    {% endfor %}
+{% endblock %}

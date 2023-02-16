@@ -1,0 +1,18 @@
+<h5 id="description">Description</h5>
+<p>Our site requires proper login and sign-up features. Django provides us with vast functionality on authentication and allows us to create groups and permissions. That'll be enough for us.</p>
+<p>First, let's create HTML templates for login and sign-up by adding links to the sign-up and login pages at our main template. Please keep in mind that a link should redirect us to another page. Two new HTML templates in the templates' directory should contain the appropriate forms wrapped in tags <code class="java">&lt;form&gt;</code>…<code class="java">&lt;/form&gt;</code>.</p>
+<p>After this, add two new view functions for the templates in the <em>views.py</em> file. For the sign-up view function, import <code class="java">UserCreationForm</code>. With this, you'll be able to create a user with no privileges — you'll require only a username and a password.</p>
+<p>As usual, adjust the URL mapper. Each new feature with extra pages needs new paths in <em>url.py</em>.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Create new HTML templates for login and sign-up;</li>
+<li>Create view functions for the new templates;</li>
+<li>Adjust the URL mapper.</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p><strong>Example 1</strong>: <em>the main page</em></p>
+<p><img alt="" height="449" name="main page with log in.png" src="https://ucarecdn.com/bcb26eb5-9aee-4a51-8cc4-d81d0cfdacf0/" width="414"/></p>
+<p><strong>Example 2</strong>:<strong> </strong><em>the sign-up page</em></p>
+<p><img alt="" height="226" name="signup.png" src="https://ucarecdn.com/bfe95c3a-f4cf-4041-bac5-e7a24ece7dc0/" width="547"/></p>
+<p><strong>Example 3</strong>:<strong> </strong><em>the login page</em></p>
+<p><img alt="" height="128" name="login.png" src="https://ucarecdn.com/b51acc89-aa0a-47c0-bf55-462ea4c5b996/" width="312"/></p>

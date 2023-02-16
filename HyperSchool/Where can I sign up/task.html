@@ -1,0 +1,16 @@
+<h5 id="description">Description</h5>
+<p>Our site lacks one crucial page. This is the page where students enroll in courses. This is also where users submit their personal data to the app database.</p>
+<p>Let's create a form for enrolling. Start with creating a required form in the <em>forms.py</em> file. Don't forget to list all the fields that are required to fill the <code class="java">Student</code> model with data. There are two ways to do this — use <code class="java">ModelForm</code> or <code class="java">Form</code> and mention the required columns.</p>
+<p>After that, create a view function in <em>views.py</em> for it. This view function works with the <code class="java">POST</code>-method. It needs to check whether the form is valid. Don't forget to set up a URL to redirect users to the <code class="java">main</code> and <code class="java">course_details</code> page after enrolling.</p>
+<p>Furthermore, add a new HTML template and URLs. It's necessary to create one more HTML template for this purpose. Set up the appropriate path to <code class="java">/schedule/add_course/</code> in <em>urls.py</em>. Place a link to the new page on the page with the course details.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Create a new form for enrolling;</li>
+<li>Create a new view function for it;</li>
+<li>Add an HTML template and URLs.</li>
+</ul>
+<h5 id="examples">Examples</h5>
+<p><strong>Example 1</strong>:<strong> </strong><em>a</em><strong> </strong><em>link on the page</em></p>
+<p><img alt="" height="714" name="course details for apply.png" src="https://ucarecdn.com/7f797a94-7274-4676-a5ed-9f0a3330651f/" width="711"/></p>
+<p><strong>Example 2</strong>:<strong> </strong><em>an application form</em></p>
+<p> <img alt="" height="276" name="apply page.png" src="https://ucarecdn.com/3e845ed2-01ad-4e9d-8508-90320eb0d943/" width="295"/></p>

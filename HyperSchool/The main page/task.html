@@ -1,0 +1,38 @@
+<h5 id="description">Description</h5>
+<p>After we've created our models, it's time to take a step further and provide the app with the main page. It'll contain the title of our online school, a greeting, some information, and a list of available courses. To make it available for users, we'll create the URL mapper and a view for the page.</p>
+<p>First, let's create a directory for templates, and the <em>main.html</em> or <em>index.html</em> file inside. You may use the <em>base.html</em> file and inherit all project pages from it — that's considered good practice. Later, we will add the navigation links to other pages. Information should be placed in <code class="language-django">&lt;h1&gt;...&lt;hn&gt;</code>, <code class="language-django">&lt;p&gt;</code> tags. You may provide a template with any information, but the <code class="language-django">&lt;h2&gt;</code> tag with the name of the project <code class="language-django">HyperSchool</code> is necessary.</p>
+<p>As the next step, create <code class="language-django">SearchForm</code> in the <em>forms.py</em> file in the app directory. With this, we'll be able to search for courses by title when the list is really long. The <em>forms.py </em>file<em> </em>is to be created manually. Add the <code class="language-django">&lt;form&gt;</code> tag to the template with the input class <code class="language-django">search</code> and the name <code class="language-django">q</code>.</p>
+<p>After that, let's change the <em>views.py</em> file to determine the way our information will be represented. Write a function for this view and check the query is <code class="language-django">is_valid</code> and display certain objects from the database with the <code class="language-django">q</code> in the title or all objects if <code class="language-django">q</code> is <code class="language-django">None</code>.</p>
+<p>To display a list of courses available, we can use the generated count of the <code class="language-django">Course</code> entries in the database (like <code class="language-django">{% for course in courses %}</code>). Inside the count, place a link to the absolute course URL. To use it, it's necessary to add an appropriate function to our models. As a result, a link should be like <em><code class="language-django">https://schedule/course_details/1</code></em> (with a unique number for each course from the database).</p>
+<p>Here is an example of this feature's realization (if you build a database of employees or students):</p>
+<pre><code class="language-django"># in file 'models.py':
+from django.db import models
+from django.shortcuts import reverse
+
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=100)
+    surname = models.CharFiled(max_length=100)
+    age = models.IntegerField()
+    speciality = models.CharField(max_length=150)
+
+    def get_absolute_url(self):
+        return reverse('pers_url', kwargs={'id':self,id, 'first_name':self.first_name, 'surname':self.surname})
+
+# in file 'urls.py':
+from django.urls import path
+
+urlpatterns = [
+    path('users/&lt;int:id&gt;/&lt;str:name&gt;', PersonView.as_view(), name='pers_url')
+]</code></pre>
+<p>To generate URL patterns in the app directory, you may want to create <em>urls.py</em> inside and use the <code class="language-django">include</code> option in the root <em>urls.py</em>. The path we need to create may look like this: <code class="language-django">path('schedule/main/', main, name='main')</code>. If you start the application on your computer with <code class="language-django">python manage.py runserver</code>, the main page should be available at <em>localhost:8000/schedule/main/</em>.</p>
+<h5 id="objectives">Objectives</h5>
+<ul>
+<li>Create an HTML template for the main page. Don't forget to use the stipulated tags and <code class="language-django">HyperSchool</code> as the main title;</li>
+<li>Add <code class="language-django">SearchForm</code> for courses according to the Description section;</li>
+<li>Create view functions for representing data;</li>
+<li>Deliver the URL mapper for the main page.</li>
+</ul>
+<h5 id="example">Example</h5>
+<p><strong>Example 1</strong>:<strong> </strong><em>the</em><strong> </strong><em>main page</em></p>
+<p><img alt="" height="417" name="main page without log in.png" src="https://ucarecdn.com/56aa9b8e-34ab-40b8-88e1-689b8dd0de84/" width="393"/></p>

@@ -1,0 +1,23 @@
+{% extends 'schedule/base.html' %}
+{% block title %} <title>HyperSchool</title> {% endblock %}
+
+
+{% block body %}
+<h2> HyperSchool</h2>
+<p>Hi! Welcome to the site of online HyperSchool!</p>
+<p>Feel free to choose any speciality you are interested in!</p>
+<p><a href="{% url 'signup' %}">Sign up</a></p>
+<p><a href="{% url 'login' %}">Login</a></p>
+<form method="get">
+  {% csrf_token %}
+<!--  <input type="search" name="q" />-->
+  {{ form }}
+  <input type="submit" value="search" />
+</form>
+<p>{{ course_count }} courses</p>
+
+  {% for course in courses %}
+  <a href="{% url 'details' course.id %}"> {{ course.title }} </a> </br>
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'schedule/base.html' %}
+{% block body %}
+<h1>Apply to the course</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+</form>
+{% endblock %}

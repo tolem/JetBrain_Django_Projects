@@ -1,0 +1,9 @@
+type: framework
+content:
+- Database structure
+- The main page
+- Customers require more information
+- Where can I sign up
+- Remember me
+- Who's there
+current_task: 5
